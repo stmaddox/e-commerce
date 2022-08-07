@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
     }
   })
   .then(dbTagData => {
-    if (dbTagData) {
+    if (!dbTagData) {
       res.status(404).json({ message: 'No tag found!' });
       return;
     }
@@ -30,6 +30,9 @@ router.get('/:id', (req, res) => {
   // be sure to include its associated Product data
   Tag.findOne({
     where: {
+      id: req.params.id
+    },
+    include: {
       model: Product,
       attributes: ['id', 'product_name', 'price', 'stock', 'category_id']
     }

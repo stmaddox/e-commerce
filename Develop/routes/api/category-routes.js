@@ -75,6 +75,7 @@ router.put('/:id', (req, res) => {
       res.status(404).json({ message: 'This id does not match a category!' });
       return;
     }
+    res.json(dbCategoryData);
   })
   .catch(err => {
     console.log(err);
@@ -94,6 +95,7 @@ router.delete('/:id', (req, res) => {
       res.status(404).json({ message: 'This id does not match a category!' });
       return;
     }
+    res.json(dbCategoryData);
   })
   .catch(err => {
     console.log(err);
